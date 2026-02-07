@@ -1,0 +1,224 @@
+:root {
+    --primary-color: #ff4d6d;
+    --secondary-color: #ff8fa3;
+    --bg-gradient-start: #fff0f3;
+    --bg-gradient-end: #ffccd5;
+    --text-color: #590d22;
+    --btn-shadow: rgba(255, 77, 109, 0.4);
+    --overlay-bg: rgba(0, 0, 0, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.scene.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 10;
+}
+
+.hidden {
+    display: none; /* Helper to fully hide if needed, but opacity handles transition */
+}
+
+/* Scene 1: Question */
+.content {
+    max-width: 90%;
+    padding: 20px;
+    z-index: 2;
+}
+
+.romantic-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: float 3s ease-in-out infinite;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative; /* Context for absolute NO button if needed */
+    min-height: 80px; /* Space for buttons */
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+    font-weight: 700;
+    box-shadow: 0 4px 15px var(--btn-shadow);
+}
+
+.yes-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.yes-btn:hover {
+    transform: scale(1.1);
+    background-color: #ff3355;
+}
+
+.no-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    position: relative; /* Default position */
+    transition: all 0.3s ease; /* Smooth movement when strict absolute takes over */
+}
+
+.hidden-message {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0;
+    transition: opacity 0.5s;
+    min-height: 24px;
+}
+
+/* Scene 2: Think Again */
+#scene-think .overlay {
+    background: var(--overlay-bg);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emotional-text {
+    color: #fff;
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.sub-text {
+    color: #ffdce0;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.think-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.think-btn:hover {
+    background-color: white;
+    color: var(--text-color);
+}
+
+/* Scene 3: Celebration */
+#scene-celebration {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); 
+}
+
+.celebration-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: #d6336c;
+    margin-bottom: 20px;
+}
+
+.letter-container {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: slideUp 1s ease-out;
+}
+
+.letter-container p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.signature {
+    text-align: right;
+    font-weight: bold;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Hearts */
+.heart {
+    position: absolute;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: fly 4s linear infinite;
+    bottom: -20px;
+    z-index: 1;
+}
+
+@keyframes fly {
+    to {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .romantic-text { font-size: 2rem; }
+    .btn { padding: 12px 30px; font-size: 1rem; }
+    .letter-container { padding: 20px; font-size: 0.95rem; }
+    /* Ensure NO button has room to move on mobile */
+    .buttons-container { flex-direction: column; align-items: center; gap: 15px; height: 150px; }
+    /* Reset position for mobile absolute movement logic might differ */
+    .no-btn { width: auto; }
+}

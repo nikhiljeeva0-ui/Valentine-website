@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Scene 1: Main Question -->
+    <div id="scene-question" class="scene active">
+        <div class="content">
+            <h1 class="romantic-text">Will you be my Valentine? 💖</h1>
+            <div class="buttons-container">
+                <button id="yes-btn" class="btn yes-btn">YES ❤️</button>
+                <button id="no-btn" class="btn no-btn">NO 😒</button>
+            </div>
+            <p id="no-message" class="hidden-message"></p>
+        </div>
+    </div>
+
+    <!-- Scene 2: Think Again -->
+    <div id="scene-think" class="scene hidden">
+        <div class="overlay">
+            <div class="content">
+                <h1 class="emotional-text">Think it once more 💭</h1>
+                <p class="sub-text">Some choices deserve a second thought ❤️</p>
+                <button id="think-btn" class="btn think-btn">Okay… I’ll think 😌</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 3: Celebration -->
+    <div id="scene-celebration" class="scene hidden">
+        <div class="content celebration-content">
+            <h1 class="celebration-title">I knew you’d say YES ❤️</h1>
+            <div class="letter-container">
+                <p>My Dear Sweet Heart ❤️</p>
+                <p>From the moment you walked into my life,<br>things changed in ways I never expected.</p>
+                <p>You became my calm in chaos,<br>my smile without a reason,<br>and my favorite thought without trying.</p>
+                <p>I don’t promise perfection,<br>but I promise honesty.<br>I don’t promise easy days,<br>but I promise to stand with you on every one of them.</p>
+                <p>With you, even silence feels warm.<br>With you, time feels meaningful.<br>With you, love feels real.</p>
+                <p>This isn’t just a Valentine’s message…<br>This is me choosing you —<br>today, tomorrow, and every day that follows.</p>
+                <p class="signature">Always yours,<br>❤️</p>
+            </div>
+        </div>
+        <div id="hearts-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
